@@ -26,15 +26,8 @@ async function handleSuccess(resources, request) {
 
     const tokenCollection = await database.collection('token')
     const tokens = await tokenCollection.find(filter).toArray()
-    const result = {}
 
-    if (tokens.length > 0) {
-        tokens.forEach(token => {
-            result[token.tokenString] = token.value
-        })
-    }
-
-    return result
+    return tokens
 }
 
 function handleError(error, h) {
